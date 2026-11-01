@@ -8,11 +8,13 @@ public class Cliente {
     private String sms;
     private String contraseña;
     private int puntos;
-    private Rango rango;
 
+    private Rango rango;
     private Transaccion transaccion;
     private EmpresaMonedero ownedByEmpresaMonedero;
     private Monedero monedero;
+    private TransaccionProgramada transaccionProgramada;
+
 
     public Cliente(Monedero monedero, Rango rango, Transaccion transaccion, EmpresaMonedero ownedByEmpresaMonedero, int puntos, String contraseña, String sms, String telefono, String correo, String documento, String nombreCompleto) {
         this.monedero = monedero;
@@ -26,6 +28,14 @@ public class Cliente {
         this.correo = correo;
         this.documento = documento;
         this.nombreCompleto = nombreCompleto;
+    }
+
+    public TransaccionProgramada getTransaccionProgramada() {
+        return transaccionProgramada;
+    }
+
+    public void setTransaccionProgramada(TransaccionProgramada transaccionProgramada) {
+        this.transaccionProgramada = transaccionProgramada;
     }
 
     public String getDocumento() {
