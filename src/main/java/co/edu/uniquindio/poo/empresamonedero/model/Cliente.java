@@ -125,4 +125,4 @@ public class Cliente {
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
-}
+    }
