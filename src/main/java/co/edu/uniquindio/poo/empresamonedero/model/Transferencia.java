@@ -4,7 +4,12 @@ import java.time.LocalDate;
 
 public class Transferencia extends Transaccion {
 
-    public Transferencia(String codigo, AnalizadorTransaccion ownedByAnalizadorTransaccion, TransaccionProgramada transaccionProgramada, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero ownedByEmpresaMonedero, double monto, double comicion, LocalDate fecha) {
-        super(codigo, ownedByAnalizadorTransaccion, transaccionProgramada, cliente, detalleMonedero, estado, ownedByEmpresaMonedero, monto, comicion, fecha);
+
+
+    public Transferencia(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero ownedByEmpresaMonedero, double monto, double comicion, LocalDate fecha) {
+        super(codigo, cliente, detalleMonedero, estado, ownedByEmpresaMonedero, monto, comicion, fecha);
+
     }
+
+
 }

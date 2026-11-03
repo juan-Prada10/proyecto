@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.empresamonedero.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public abstract class Transaccion {
 
@@ -13,13 +14,11 @@ public abstract class Transaccion {
     private Estado estado;
     private DetalleMonedero detalleMonedero;
     private Cliente cliente;
-    private TransaccionProgramada transaccionProgramada;
-    private AnalizadorTransaccion ownedByAnalizadorTransaccion;
+    private ArrayList<TransaccionProgramada> listaTransaccionProgramadas = new ArrayList<>();
+    private ArrayList<AnalizadorTransaccion> listaAnalizadorTransacciones =  new ArrayList<>();
 
-    public Transaccion(String codigo, AnalizadorTransaccion ownedByAnalizadorTransaccion, TransaccionProgramada transaccionProgramada, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero ownedByEmpresaMonedero, double monto, double comicion, LocalDate fecha) {
+    public Transaccion(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero ownedByEmpresaMonedero, double monto, double comicion, LocalDate fecha) {
         this.codigo = codigo;
-        this.ownedByAnalizadorTransaccion = ownedByAnalizadorTransaccion;
-        this.transaccionProgramada = transaccionProgramada;
         this.cliente = cliente;
         this.detalleMonedero = detalleMonedero;
         this.estado = estado;
@@ -37,12 +36,12 @@ public abstract class Transaccion {
         this.codigo = codigo;
     }
 
-    public AnalizadorTransaccion getOwnedByAnalizadorTransaccion() {
-        return ownedByAnalizadorTransaccion;
+    public ArrayList<AnalizadorTransaccion> getListaAnalizadorTransacciones() {
+        return listaAnalizadorTransacciones;
     }
 
-    public void setOwnedByAnalizadorTransaccion(AnalizadorTransaccion ownedByAnalizadorTransaccion) {
-        this.ownedByAnalizadorTransaccion = ownedByAnalizadorTransaccion;
+    public void setListaAnalizadorTransacciones(ArrayList<AnalizadorTransaccion> listaAnalizadorTransacciones) {
+        this.listaAnalizadorTransacciones = listaAnalizadorTransacciones;
     }
 
     public Cliente getCliente() {
@@ -53,12 +52,12 @@ public abstract class Transaccion {
         this.cliente = cliente;
     }
 
-    public TransaccionProgramada getTransaccionProgramada() {
-        return transaccionProgramada;
+    public ArrayList<TransaccionProgramada> getListaTransaccionProgramadas() {
+        return listaTransaccionProgramadas;
     }
 
-    public void setTransaccionProgramada(TransaccionProgramada transaccionProgramada) {
-        this.transaccionProgramada = transaccionProgramada;
+    public void setListaTransaccionProgramadas(ArrayList<TransaccionProgramada> listaTransaccionProgramadas) {
+        this.listaTransaccionProgramadas = listaTransaccionProgramadas;
     }
 
     public DetalleMonedero getDetalleMonedero() {

@@ -224,11 +224,47 @@ public class EmpresaMonedero {
         }return false;
     }
 
+    //1. Los clientes pueden agregar dinero a su cuenta
+
+    public boolean deposito(Deposito deposito){
+        if(crearDeposito(deposito)){
+            deposito.getDetalleMonedero().setSaldo(deposito.getDetalleMonedero().getSaldo() + deposito.getMonto());
+            return true;
+        }return false;
+    }
+
+    //2. Los clientes pueden retirar dinerode sus cuentas
+
+    public boolean retiro(Retiro retiro){
+        if (retiro.getMonto()<=retiro.getDetalleMonedero().getSaldo()){
+            if (crearRetiro(retiro)){
+                retiro.getDetalleMonedero().setSaldo(retiro.getDetalleMonedero().getSaldo()-retiro.getMonto());
+                return true;
+            }return false;
+        }return false;
+    }
+
+    //3. Realizar una transferencia a otra usuario
+
+    public boolean transferencia(Transferencia transferencia, String codigoMonedero){
+        if(transferencia.getDetalleMonedero().getSaldo()> transferencia.getMonto()){
+            if (crearTransferencia(transferencia)){
+                transferencia.getDetalleMonedero().setSaldo(transferencia.getDetalleMonedero().getSaldo()-transferencia.getMonto());
+                Optional<DetalleMonedero> monederoDestino =listaMonederos.stream().
+                        flatMap(monedero -> monedero.getListaDetalleMonedero().stream().
+                                filter(d->d.getCodigo().equals(codigoMonedero))).findFirst();
+                monederoDestino.get().setSaldo(monederoDestino.get().getSaldo()+ transferencia.getMonto());
+                return true;
+            }return false;
+        }return false;
+    }
 
 
 
 
 
-    
+
+
+
 }
 
