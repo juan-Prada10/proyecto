@@ -300,5 +300,59 @@ public class EmpresaMonedero {
                 .sorted(Comparator.comparing(Transaccion::getFecha).reversed())
                 .collect(Collectors.toList());
     }
+
+    // 2. Rangos de Clientes
+    public Rango obtenerRangoCliente(Cliente cliente) {
+        int puntos = cliente.getPuntos();
+
+        if (puntos >= 3000) {
+            return Rango.PLATINO;
+        } else if (puntos >= 1500) {
+            return Rango.ORO;
+        } else if (puntos >= 500) {
+            return Rango.PLATA;
+        } else {
+            return Rango.BRONCE;
+        }
+    }
+    public double calcularComisionCliente(Cliente cliente, double comisionBase) {
+        Rango rango = obtenerRangoCliente(cliente);
+
+        switch (rango) {
+            case PLATINO:
+                return comisionBase * 0.70; // 30% de descuento
+            case ORO:
+                return comisionBase * 0.85; // 15% de descuento
+            case PLATA:
+                return comisionBase * 0.95; // 5% de descuento
+            case BRONCE:
+            default:
+                return comisionBase;        // Sin descuento
+        }
+    }
+    public void asignarPuntosConBono(Cliente cliente, int puntosBase) {
+        Rango rango = obtenerRangoCliente(cliente);
+        double multiplicador = 1.0;
+
+        switch (rango) {
+            case PLATINO:
+                multiplicador = 1.5; // 50% extra
+                break;
+            case ORO:
+                multiplicador = 1.25; // 25% extra
+                break;
+            case PLATA:
+                multiplicador = 1.10; // 10% extra
+                break;
+            case BRONCE:
+            default:
+                multiplicador = 1.0;
+                break;
+        }
+
+        int puntosTotales = (int) Math.round(puntosBase * multiplicador);
+        cliente.setPuntos(cliente.getPuntos() + puntosTotales);
+    }
+
 }
 
