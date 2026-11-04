@@ -1,7 +1,10 @@
 package co.edu.uniquindio.poo.empresamonedero.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class EmpresaMonedero {
 
@@ -85,79 +88,86 @@ public class EmpresaMonedero {
     public boolean actualizarCliente(String documento, Cliente clienteActualizado) {
         Optional<Cliente> clienteEncontrado = buscarCliente(documento);
         if (clienteEncontrado.isPresent()) {
-           clienteEncontrado.get().setDocumento (clienteActualizado.getDocumento());
-           clienteEncontrado.get().setDocumento(clienteActualizado.getDocumento());
-           clienteEncontrado.get().setNombreCompleto(clienteActualizado.getNombreCompleto());
-           clienteEncontrado.get().setCorreo(clienteActualizado.getCorreo());
-           clienteEncontrado.get().setTelefono(clienteActualizado.getTelefono());
-           clienteEncontrado.get().setSms(clienteActualizado.getSms());
-           clienteEncontrado.get().setContraseña(clienteActualizado.getContraseña());
-           clienteEncontrado.get().setPuntos(clienteActualizado.getPuntos());
+            clienteEncontrado.get().setDocumento(clienteActualizado.getDocumento());
+            clienteEncontrado.get().setDocumento(clienteActualizado.getDocumento());
+            clienteEncontrado.get().setNombreCompleto(clienteActualizado.getNombreCompleto());
+            clienteEncontrado.get().setCorreo(clienteActualizado.getCorreo());
+            clienteEncontrado.get().setTelefono(clienteActualizado.getTelefono());
+            clienteEncontrado.get().setSms(clienteActualizado.getSms());
+            clienteEncontrado.get().setContraseña(clienteActualizado.getContraseña());
+            clienteEncontrado.get().setPuntos(clienteActualizado.getPuntos());
             return true;
         }
         return false;
     }
 
-    public Optional<Monedero> buscarMonedero(String codigo){
+    public Optional<Monedero> buscarMonedero(String codigo) {
         return listaMonederos.stream().filter(monedero -> monedero.getCodigo().equals(codigo)).findFirst();
     }
 
 
     //CRUD monedero
-    public boolean crearMonedero(Monedero monedero){
+    public boolean crearMonedero(Monedero monedero) {
         Optional<Monedero> monederoEncontrado = buscarMonedero(monedero.getCodigo());
-        if(monederoEncontrado.isPresent()){
+        if (monederoEncontrado.isPresent()) {
             return false;
-        }else {listaMonederos.add(monedero);
-        return true;}
+        } else {
+            listaMonederos.add(monedero);
+            return true;
+        }
     }
 
-    public boolean eliminarMonedero(String codigo){
-        Optional<Monedero> monederoEncontrado= buscarMonedero(codigo);
-        if (monederoEncontrado.isPresent()){
+    public boolean eliminarMonedero(String codigo) {
+        Optional<Monedero> monederoEncontrado = buscarMonedero(codigo);
+        if (monederoEncontrado.isPresent()) {
             listaMonederos.remove(monederoEncontrado.get());
             return true;
-        }return false;
+        }
+        return false;
     }
 
-    public boolean actualizarMonedero(String codigo, Monedero monederoNuevo){
+    public boolean actualizarMonedero(String codigo, Monedero monederoNuevo) {
         Optional<Monedero> monederoEncontrado = buscarMonedero(codigo);
-        if (monederoEncontrado.isPresent()){
+        if (monederoEncontrado.isPresent()) {
             monederoEncontrado.get().setCodigo(monederoNuevo.getCodigo());
             monederoEncontrado.get().setMonto(monederoNuevo.getMonto());
             return true;
-        }return false;
+        }
+        return false;
     }
 
 
     //CRUD transacciones
-    public Optional<Transaccion> buscarTransaccion(String codigo){
+    public Optional<Transaccion> buscarTransaccion(String codigo) {
         return listaTransacciones.stream().filter(transaccion -> transaccion.getCodigo().equals(codigo)).findFirst();
     }
 
-    public boolean crearTransferencia(Transferencia transferencia){
+    public boolean crearTransferencia(Transferencia transferencia) {
         Optional<Transaccion> transaccionEncontrada = buscarTransaccion(transferencia.getCodigo());
-        if (!transaccionEncontrada.isPresent()){
-            if (transaccionEncontrada.get() instanceof Transferencia){
+        if (!transaccionEncontrada.isPresent()) {
+            if (transaccionEncontrada.get() instanceof Transferencia) {
                 listaTransacciones.add(transaccionEncontrada.get());
                 return true;
-            }return false;
-        }return false;
+            }
+            return false;
+        }
+        return false;
 
     }
 
-    public boolean eliminarTransaccion(String codigo){
+    public boolean eliminarTransaccion(String codigo) {
         Optional<Transaccion> transaccionEncontrada = buscarTransaccion(codigo);
-        if (transaccionEncontrada.isPresent()){
+        if (transaccionEncontrada.isPresent()) {
             listaTransacciones.remove(transaccionEncontrada.get());
             return true;
-        }return false;
+        }
+        return false;
     }
 
-    public boolean actualizarTransferencia(String codigo, Transferencia transferenciaNueva){
+    public boolean actualizarTransferencia(String codigo, Transferencia transferenciaNueva) {
         Optional<Transaccion> transaccionEncontrada = buscarTransaccion(codigo);
-        if (transaccionEncontrada.isPresent()){
-            if (transaccionEncontrada.get() instanceof Transferencia){
+        if (transaccionEncontrada.isPresent()) {
+            if (transaccionEncontrada.get() instanceof Transferencia) {
                 transaccionEncontrada.get().setCliente(transferenciaNueva.getCliente());
                 transaccionEncontrada.get().setCodigo(transferenciaNueva.getCodigo());
                 transaccionEncontrada.get().setFecha(transferenciaNueva.getFecha());
@@ -166,25 +176,29 @@ public class EmpresaMonedero {
                 transaccionEncontrada.get().setComicion(transferenciaNueva.getComicion());
                 transaccionEncontrada.get().setMonto(transferenciaNueva.getMonto());
                 return true;
-            }return false;
-        }return false;
+            }
+            return false;
+        }
+        return false;
     }
 
-    public boolean crearRetiro(Retiro retiro){
+    public boolean crearRetiro(Retiro retiro) {
         Optional<Transaccion> transaccionEncontrada = buscarTransaccion(retiro.getCodigo());
-        if (!transaccionEncontrada.isPresent()){
-            if (transaccionEncontrada.get() instanceof Retiro){
+        if (!transaccionEncontrada.isPresent()) {
+            if (transaccionEncontrada.get() instanceof Retiro) {
                 listaTransacciones.add(transaccionEncontrada.get());
                 return true;
-            }return false;
-        }return false;
+            }
+            return false;
+        }
+        return false;
 
     }
 
-    public boolean actualizarRetiro(String codigo, Retiro retiroNuevo){
+    public boolean actualizarRetiro(String codigo, Retiro retiroNuevo) {
         Optional<Transaccion> transaccionEncontrada = buscarTransaccion(codigo);
-        if (transaccionEncontrada.isPresent()){
-            if (transaccionEncontrada.get() instanceof Retiro){
+        if (transaccionEncontrada.isPresent()) {
+            if (transaccionEncontrada.get() instanceof Retiro) {
                 transaccionEncontrada.get().setCliente(retiroNuevo.getCliente());
                 transaccionEncontrada.get().setCodigo(retiroNuevo.getCodigo());
                 transaccionEncontrada.get().setFecha(retiroNuevo.getFecha());
@@ -193,25 +207,29 @@ public class EmpresaMonedero {
                 transaccionEncontrada.get().setComicion(retiroNuevo.getComicion());
                 transaccionEncontrada.get().setMonto(retiroNuevo.getMonto());
                 return true;
-            }return false;
-        }return false;
+            }
+            return false;
+        }
+        return false;
     }
 
-    public boolean crearDeposito(Deposito deposito){
+    public boolean crearDeposito(Deposito deposito) {
         Optional<Transaccion> transaccionEncontrada = buscarTransaccion(deposito.getCodigo());
-        if (!transaccionEncontrada.isPresent()){
-            if (transaccionEncontrada.get() instanceof Deposito){
+        if (!transaccionEncontrada.isPresent()) {
+            if (transaccionEncontrada.get() instanceof Deposito) {
                 listaTransacciones.add(transaccionEncontrada.get());
                 return true;
-            }return false;
-        }return false;
+            }
+            return false;
+        }
+        return false;
 
     }
 
-    public boolean actualizarDeposito(String codigo, Deposito depositoNuevo){
+    public boolean actualizarDeposito(String codigo, Deposito depositoNuevo) {
         Optional<Transaccion> transaccionEncontrada = buscarTransaccion(codigo);
-        if (transaccionEncontrada.isPresent()){
-            if (transaccionEncontrada.get() instanceof Deposito){
+        if (transaccionEncontrada.isPresent()) {
+            if (transaccionEncontrada.get() instanceof Deposito) {
                 transaccionEncontrada.get().setCliente(depositoNuevo.getCliente());
                 transaccionEncontrada.get().setCodigo(depositoNuevo.getCodigo());
                 transaccionEncontrada.get().setFecha(depositoNuevo.getFecha());
@@ -220,51 +238,67 @@ public class EmpresaMonedero {
                 transaccionEncontrada.get().setComicion(depositoNuevo.getComicion());
                 transaccionEncontrada.get().setMonto(depositoNuevo.getMonto());
                 return true;
-            }return false;
-        }return false;
+            }
+            return false;
+        }
+        return false;
     }
 
     //1. Los clientes pueden agregar dinero a su cuenta
 
-    public boolean deposito(Deposito deposito){
-        if(crearDeposito(deposito)){
+    public boolean deposito(Deposito deposito) {
+        if (crearDeposito(deposito)) {
             deposito.getDetalleMonedero().setSaldo(deposito.getDetalleMonedero().getSaldo() + deposito.getMonto());
             return true;
-        }return false;
+        }
+        return false;
     }
 
     //2. Los clientes pueden retirar dinerode sus cuentas
 
-    public boolean retiro(Retiro retiro){
-        if (retiro.getMonto()<=retiro.getDetalleMonedero().getSaldo()){
-            if (crearRetiro(retiro)){
-                retiro.getDetalleMonedero().setSaldo(retiro.getDetalleMonedero().getSaldo()-retiro.getMonto());
+    public boolean retiro(Retiro retiro) {
+        if (retiro.getMonto() <= retiro.getDetalleMonedero().getSaldo()) {
+            if (crearRetiro(retiro)) {
+                retiro.getDetalleMonedero().setSaldo(retiro.getDetalleMonedero().getSaldo() - retiro.getMonto());
                 return true;
-            }return false;
-        }return false;
+            }
+            return false;
+        }
+        return false;
     }
 
     //3. Realizar una transferencia a otra usuario
 
-    public boolean transferencia(Transferencia transferencia, String codigoMonedero){
-        if(transferencia.getDetalleMonedero().getSaldo()> transferencia.getMonto()){
-            if (crearTransferencia(transferencia)){
-                transferencia.getDetalleMonedero().setSaldo(transferencia.getDetalleMonedero().getSaldo()-transferencia.getMonto());
-                Optional<DetalleMonedero> monederoDestino =listaMonederos.stream().
+    public boolean transferencia(Transferencia transferencia, String codigoMonedero) {
+        if (transferencia.getDetalleMonedero().getSaldo() > transferencia.getMonto()) {
+            if (crearTransferencia(transferencia)) {
+                transferencia.getDetalleMonedero().setSaldo(transferencia.getDetalleMonedero().getSaldo() - transferencia.getMonto());
+                Optional<DetalleMonedero> monederoDestino = listaMonederos.stream().
                         flatMap(monedero -> monedero.getListaDetalleMonedero().stream().
-                                filter(d->d.getCodigo().equals(codigoMonedero))).findFirst();
-                monederoDestino.get().setSaldo(monederoDestino.get().getSaldo()+ transferencia.getMonto());
+                                filter(d -> d.getCodigo().equals(codigoMonedero))).findFirst();
+                monederoDestino.get().setSaldo(monederoDestino.get().getSaldo() + transferencia.getMonto());
                 return true;
-            }return false;
-        }return false;
+            }
+            return false;
+        }
+        return false;
     }
 
+    // 4. Consultar el saldo de una cuenta
+    public Optional<Double> consultarSaldo(String codigoMonedero) {
+        return listaMonederos.stream()
+                .flatMap(monedero -> monedero.getListaDetalleMonedero().stream())
+                .filter(detalle -> detalle.getCodigo().equals(codigoMonedero))
+                .map(DetalleMonedero::getSaldo)
+                .findFirst();
+    }
 
-
-
-
-
-
-
+    // 5. Consultar historial de transacciones de un cliente
+    public List<Transaccion> consultarHistorialTransacciones(String documento) {
+        return listaTransacciones.stream()
+                .filter(t -> t.getCliente() != null && t.getCliente().getDocumento().equals(documento))
+                .sorted(Comparator.comparing(Transaccion::getFecha).reversed())
+                .collect(Collectors.toList());
+    }
 }
 
