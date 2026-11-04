@@ -429,7 +429,7 @@ public class EmpresaMonedero {
                 if (tp.getRecurrenci() > 0) {
                     tp.setFecha(tp.getFecha().plusDays(tp.getRecurrenci()));
                 } else {
-                    tp.setEstado(Estado.EJECUTADA);                          
+                    tp.setEstado(Estado.EJECUTADA);
                 }
             }
         }
