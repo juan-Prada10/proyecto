@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.empresamonedero.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -14,7 +15,7 @@ public class EmpresaMonedero {
     private ArrayList<Cliente> listaClientes = new ArrayList<>();
     private ArrayList<Monedero> listaMonederos = new ArrayList<>();
     private ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
-
+    private ArrayList<TransaccionProgramada> listaTransaccionesProgramadas = new ArrayList<>();
 
     public EmpresaMonedero(String nombre, String direccion) {
         this.nombre = nombre;
@@ -59,6 +60,13 @@ public class EmpresaMonedero {
 
     public void setListaTransacciones(ArrayList<Transaccion> listaTransacciones) {
         this.listaTransacciones = listaTransacciones;
+    }
+    public ArrayList<TransaccionProgramada> getListaTransaccionesProgramadas() {
+        return listaTransaccionesProgramadas;
+    }
+
+    public void setListaTransaccionesProgramadas(ArrayList<TransaccionProgramada> listaTransaccionesProgramadas) {
+        this.listaTransaccionesProgramadas = listaTransaccionesProgramadas;
     }
 
     //CRUD CLIENTE
@@ -352,6 +360,93 @@ public class EmpresaMonedero {
 
         int puntosTotales = (int) Math.round(puntosBase * multiplicador);
         cliente.setPuntos(cliente.getPuntos() + puntosTotales);
+    }
+
+
+    // 1. Programar/Agregar una transacción
+    public boolean programarTransaccion(TransaccionProgramada tp) {
+        boolean existe = listaTransaccionesProgramadas.stream()
+                .anyMatch(t -> t.getCodigo().equals(tp.getCodigo()));
+
+        if (existe) {
+            return false;
+        }
+        listaTransaccionesProgramadas.add(tp);
+        return true;
+    }
+
+    // 2. Algoritmo MergeSort para ordenar según getFecha()  -> O(n log n)
+    public List<TransaccionProgramada> ordenarTransaccionesPorFecha(List<TransaccionProgramada> lista) {
+        if (lista.size() <= 1) {
+            return lista;
+        }
+
+        int medio = lista.size() / 2;
+
+        List<TransaccionProgramada> izquierda =
+                ordenarTransaccionesPorFecha(new ArrayList<>(lista.subList(0, medio)));
+        List<TransaccionProgramada> derecha =
+                ordenarTransaccionesPorFecha(new ArrayList<>(lista.subList(medio, lista.size())));
+
+        return mezclarTransacciones(izquierda, derecha);
+    }
+
+    private List<TransaccionProgramada> mezclarTransacciones(List<TransaccionProgramada> izq,
+                                                             List<TransaccionProgramada> der) {
+        List<TransaccionProgramada> resultado = new ArrayList<>();
+        int i = 0, j = 0;
+
+        while (i < izq.size() && j < der.size()) {
+
+            if (!izq.get(i).getFecha().isAfter(der.get(j).getFecha())) {
+                resultado.add(izq.get(i++));
+            } else {
+                resultado.add(der.get(j++));
+            }
+        }
+
+        while (i < izq.size()) resultado.add(izq.get(i++));
+        while (j < der.size()) resultado.add(der.get(j++));
+
+        return resultado;
+    }
+
+    // 3. Procesar las transacciones programadas hasta la fecha indicada
+    public void procesarTransaccionesProgramadas(LocalDate fechaActual) {
+        List<TransaccionProgramada> pendientes = listaTransaccionesProgramadas.stream()
+                .filter(tp -> tp.getEstado() == Estado.PENDIENTE)
+                .filter(tp -> tp.getFecha() != null && !tp.getFecha().isAfter(fechaActual))
+                .collect(Collectors.toList());
+
+        for (TransaccionProgramada tp : ordenarTransaccionesPorFecha(pendientes)) {
+
+            while (tp.getEstado() == Estado.PENDIENTE && !tp.getFecha().isAfter(fechaActual)) {
+
+                if (!ejecutar(tp.getTipoTransaccion())) {
+                    break;
+                }
+
+                if (tp.getRecurrenci() > 0) {
+                    tp.setFecha(tp.getFecha().plusDays(tp.getRecurrenci()));
+                } else {
+                    tp.setEstado(Estado.EJECUTADA);                          
+                }
+            }
+        }
+    }
+
+    private boolean ejecutar(Transaccion t) {
+        if (t instanceof Deposito) {
+            return deposito((Deposito) t);
+        }
+        if (t instanceof Retiro) {
+            return retiro((Retiro) t);
+        }
+        if (t instanceof Transferencia) {
+            Transferencia tr = (Transferencia) t;
+            return transferencia(tr, tr.getDetalleMonedero().getCodigo());
+        }
+        return false;
     }
 
 }
