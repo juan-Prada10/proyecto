@@ -1,10 +1,7 @@
 package co.edu.uniquindio.poo.empresamonedero.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class EmpresaMonedero {
@@ -503,9 +500,16 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
     return true;
 }
 //calcular puntos por transacciones
-public void calcularPuntosPorTransaccion(Transaccion transaccion, Cliente cliente) {
-    int puntosGanados = transaccion.calcularPuntos();
-    cliente.setPuntos(cliente.getPuntos() + puntosGanados);
-}
+    public void calcularPuntosPorTransaccion(Transaccion transaccion, Cliente cliente) {
+        int puntosGanados = transaccion.calcularPuntos();
+        cliente.setPuntos(cliente.getPuntos() + puntosGanados);
+    }
+    //buscar transacciones atipicas
+    public List<Transaccion> buscarTransaccionesAtipicas() {
+        AnalizadorTransaccion analizador = new AnalizadorTransaccion(this.listaTransacciones);
+        return analizador.buscarTransaccionesAtipicas();
+    }
+    //generar notificacion
+
 }
 
