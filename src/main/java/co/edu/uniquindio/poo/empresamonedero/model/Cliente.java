@@ -1,5 +1,9 @@
 package co.edu.uniquindio.poo.empresamonedero.model;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Cliente {
     private String documento;
     private String nombreCompleto;
@@ -15,6 +19,9 @@ public class Cliente {
     private Monedero monedero;
     private TransaccionProgramada transaccionProgramada;
 
+    private List<Transaccion> listaTransacciones;
+    private List<Notificacion> listaNotificaciones;
+
 
     public Cliente(Monedero monedero, Rango rango, Transaccion transaccion, EmpresaMonedero ownedByEmpresaMonedero, int puntos, String contraseña, String sms, String telefono, String correo, String documento, String nombreCompleto) {
         this.monedero = monedero;
@@ -28,6 +35,7 @@ public class Cliente {
         this.correo = correo;
         this.documento = documento;
         this.nombreCompleto = nombreCompleto;
+        this.listaTransacciones = listaTransacciones;
     }
 
     public TransaccionProgramada getTransaccionProgramada() {
@@ -125,4 +133,7 @@ public class Cliente {
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
-    }
+
+    public List<Notificacion> getListaNotificaciones() { return listaNotificaciones; }
+
+}

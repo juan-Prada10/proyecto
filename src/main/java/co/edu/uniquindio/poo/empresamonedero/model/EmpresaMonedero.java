@@ -509,7 +509,41 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
         AnalizadorTransaccion analizador = new AnalizadorTransaccion(this.listaTransacciones);
         return analizador.buscarTransaccionesAtipicas();
     }
-    //generar notificacion
+    //generar notificaciones
+    public void enviarNotificaciones() {
+        if (listaClientes == null || listaClientes.isEmpty()) {
+            return;
+        }
 
+        double umbralSaldoBajo = 50.0;
+        LocalDate hoy = LocalDate.now();
+
+        for (Cliente cliente : listaClientes) {
+            List<Notificacion> canalesCliente = cliente.getListaNotificaciones();
+            if (canalesCliente == null || canalesCliente.isEmpty()) {
+                continue;
+            }
+
+            // 1. Condición: Saldo Bajo en alguno de los monederos del cliente
+            boolean tieneSaldoBajo = cliente.getMonedero().getListaDetalleMonedero() != null && cliente.getMonedero().getListaDetalleMonedero().stream()
+                    .anyMatch(m -> m.getSaldo() < umbralSaldoBajo);
+
+            if (tieneSaldoBajo) {
+                System.out.println("Disparando alerta de saldo bajo para: " + cliente.getNombreCompleto());
+                canalesCliente.forEach(Notificacion::enviarNotificacion);
+            }
+
+            boolean tieneProgramadaPendiente = listaTransaccionesProgramadas != null && listaTransaccionesProgramadas.stream()
+                    .anyMatch(tp -> tp.getCodigo() != null
+                            && tp.getCodigo().equals(cliente.getDocumento())
+                            && tp.getEstado() == Estado.PENDIENTE
+                            && !tp.getFecha().isAfter(hoy.plusDays(1)));
+
+            if (tieneProgramadaPendiente) {
+                System.out.println("Disparando recordatorio de transacción programada para: " + cliente.getNombreCompleto());
+                canalesCliente.forEach(Notificacion::enviarNotificacion);
+            }
+        }
+    }
 }
 
