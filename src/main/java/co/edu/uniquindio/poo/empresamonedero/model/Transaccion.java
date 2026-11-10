@@ -7,7 +7,7 @@ public abstract class Transaccion {
 
     private String codigo;
     private LocalDate fecha;
-    private double comicion;
+    private double comision;
     private double monto;
 
     private EmpresaMonedero ownedByEmpresaMonedero;
@@ -17,14 +17,14 @@ public abstract class Transaccion {
     private ArrayList<TransaccionProgramada> listaTransaccionProgramadas = new ArrayList<>();
     private ArrayList<AnalizadorTransaccion> listaAnalizadorTransacciones =  new ArrayList<>();
 
-    public Transaccion(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero ownedByEmpresaMonedero, double monto, double comicion, LocalDate fecha) {
+    public Transaccion(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero ownedByEmpresaMonedero, double monto, double comision, LocalDate fecha) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.detalleMonedero = detalleMonedero;
         this.estado = estado;
         this.ownedByEmpresaMonedero = ownedByEmpresaMonedero;
         this.monto = monto;
-        this.comicion = comicion;
+        this.comision = comision;
         this.fecha = fecha;
     }
 
@@ -84,12 +84,12 @@ public abstract class Transaccion {
         this.ownedByEmpresaMonedero = ownedByEmpresaMonedero;
     }
 
-    public double getComicion() {
-        return comicion;
+    public double getComision() {
+        return comision;
     }
 
-    public void setComicion(double comicion) {
-        this.comicion = comicion;
+    public void setComision(double comision) {
+        this.comision = comision;
     }
 
     public double getMonto() {
@@ -107,4 +107,6 @@ public abstract class Transaccion {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
+
+    public abstract int calcularPuntos();
 }

@@ -448,6 +448,63 @@ public class EmpresaMonedero {
         }
         return false;
     }
+//crear descuento por puntos
+public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int puntosACanjear) {
+    Optional<Transaccion> transaccionEncontrada = buscarTransaccion(transaccion.getCodigo());
+    if (transaccionEncontrada.isPresent()) {
+        return false;
+    }
 
+    double comisionFinal = transaccion.getComicion();
+
+    if (puntosACanjear == 100 && cliente.getPuntos() >= 100 && transaccion instanceof Transferencia) {
+        cliente.setPuntos(cliente.getPuntos() - 100);
+        comisionFinal = comisionFinal * 0.90;
+    }
+    else if (puntosACanjear == 500 && cliente.getPuntos() >= 500 && transaccion instanceof Retiro) {
+        cliente.setPuntos(cliente.getPuntos() - 500);
+        comisionFinal = 0;
+    }
+    else if (puntosACanjear == 1000 && cliente.getPuntos() >= 1000) {
+        cliente.setPuntos(cliente.getPuntos() - 1000);
+        transaccion.getDetalleMonedero().setSaldo(transaccion.getDetalleMonedero().getSaldo() + 50.0);
+    }
+
+    transaccion.setComicion(comisionFinal);
+
+    if (transaccion instanceof Deposito) {
+        transaccion.getDetalleMonedero().setSaldo(
+                transaccion.getDetalleMonedero().getSaldo() + transaccion.getMonto()
+        );
+    }
+    else if (transaccion instanceof Retiro) {
+        double totalADescontar = transaccion.getMonto() + transaccion.getComicion();
+        if (transaccion.getDetalleMonedero().getSaldo() < totalADescontar) {
+            return false;
+        }
+        transaccion.getDetalleMonedero().setSaldo(
+                transaccion.getDetalleMonedero().getSaldo() - totalADescontar
+        );
+    }
+    else if (transaccion instanceof Transferencia) {
+        Transferencia transaccion1 = (Transferencia) transaccion;
+        double totalADescontar = transaccion1.getMonto() + transaccion1.getComicion();
+
+        if (transaccion1.getDetalleMonedero().getSaldo() < totalADescontar) {
+            return false;
+        }
+
+        transaccion1.getDetalleMonedero().setSaldo(transaccion1.getDetalleMonedero().getSaldo() - totalADescontar);
+
+        transaccion1.getDetalleMonedero().setSaldo(transaccion1.getDetalleMonedero().getSaldo() + transaccion1.getMonto());
+    }
+
+    listaTransacciones.add(transaccion);
+    return true;
+}
+//calcular puntos por transacciones
+    public int calcularPuntosATransacciones(){
+
+    }
 }
 

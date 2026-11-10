@@ -4,8 +4,13 @@ import java.time.LocalDate;
 
 public class Deposito extends Transaccion{
 
-
-    public Deposito(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero ownedByEmpresaMonedero, double monto, double comicion, LocalDate fecha) {
-        super(codigo, cliente, detalleMonedero, estado, ownedByEmpresaMonedero, monto, comicion, fecha);
+    public Deposito(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero ownedByEmpresaMonedero, double monto, double comision, LocalDate fecha) {
+        super(codigo, cliente, detalleMonedero, estado, ownedByEmpresaMonedero, monto, comision, fecha);
     }
+
+    @Override
+    public int calcularPuntos() {
+        return (int) (getMonto() / 100) * 1;
+    }
+
 }
