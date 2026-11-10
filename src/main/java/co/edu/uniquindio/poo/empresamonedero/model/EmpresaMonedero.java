@@ -181,7 +181,7 @@ public class EmpresaMonedero {
                 transaccionEncontrada.get().setFecha(transferenciaNueva.getFecha());
                 transaccionEncontrada.get().setEstado(transferenciaNueva.getEstado());
                 transaccionEncontrada.get().setDetalleMonedero(transferenciaNueva.getDetalleMonedero());
-                transaccionEncontrada.get().setComicion(transferenciaNueva.getComicion());
+                transaccionEncontrada.get().setComision(transferenciaNueva.getComision());
                 transaccionEncontrada.get().setMonto(transferenciaNueva.getMonto());
                 return true;
             }
@@ -212,7 +212,7 @@ public class EmpresaMonedero {
                 transaccionEncontrada.get().setFecha(retiroNuevo.getFecha());
                 transaccionEncontrada.get().setEstado(retiroNuevo.getEstado());
                 transaccionEncontrada.get().setDetalleMonedero(retiroNuevo.getDetalleMonedero());
-                transaccionEncontrada.get().setComicion(retiroNuevo.getComicion());
+                transaccionEncontrada.get().setComision(retiroNuevo.getComision());
                 transaccionEncontrada.get().setMonto(retiroNuevo.getMonto());
                 return true;
             }
@@ -243,7 +243,7 @@ public class EmpresaMonedero {
                 transaccionEncontrada.get().setFecha(depositoNuevo.getFecha());
                 transaccionEncontrada.get().setEstado(depositoNuevo.getEstado());
                 transaccionEncontrada.get().setDetalleMonedero(depositoNuevo.getDetalleMonedero());
-                transaccionEncontrada.get().setComicion(depositoNuevo.getComicion());
+                transaccionEncontrada.get().setComision(depositoNuevo.getComision());
                 transaccionEncontrada.get().setMonto(depositoNuevo.getMonto());
                 return true;
             }
@@ -262,7 +262,7 @@ public class EmpresaMonedero {
         return false;
     }
 
-    //2. Los clientes pueden retirar dinerode sus cuentas
+    //2. Los clientes pueden retirar dinero de sus cuentas
 
     public boolean retiro(Retiro retiro) {
         if (retiro.getMonto() <= retiro.getDetalleMonedero().getSaldo()) {
@@ -275,7 +275,7 @@ public class EmpresaMonedero {
         return false;
     }
 
-    //3. Realizar una transferencia a otra usuario
+    //3. Realizar una transferencia a otro usuario
 
     public boolean transferencia(Transferencia transferencia, String codigoMonedero) {
         if (transferencia.getDetalleMonedero().getSaldo() > transferencia.getMonto()) {
@@ -455,7 +455,7 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
         return false;
     }
 
-    double comisionFinal = transaccion.getComicion();
+    double comisionFinal = transaccion.getComision();
 
     if (puntosACanjear == 100 && cliente.getPuntos() >= 100 && transaccion instanceof Transferencia) {
         cliente.setPuntos(cliente.getPuntos() - 100);
@@ -470,7 +470,7 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
         transaccion.getDetalleMonedero().setSaldo(transaccion.getDetalleMonedero().getSaldo() + 50.0);
     }
 
-    transaccion.setComicion(comisionFinal);
+    transaccion.setComision(comisionFinal);
 
     if (transaccion instanceof Deposito) {
         transaccion.getDetalleMonedero().setSaldo(
@@ -478,7 +478,7 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
         );
     }
     else if (transaccion instanceof Retiro) {
-        double totalADescontar = transaccion.getMonto() + transaccion.getComicion();
+        double totalADescontar = transaccion.getMonto() + transaccion.getComision();
         if (transaccion.getDetalleMonedero().getSaldo() < totalADescontar) {
             return false;
         }
@@ -488,7 +488,7 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
     }
     else if (transaccion instanceof Transferencia) {
         Transferencia transaccion1 = (Transferencia) transaccion;
-        double totalADescontar = transaccion1.getMonto() + transaccion1.getComicion();
+        double totalADescontar = transaccion1.getMonto() + transaccion1.getComision();
 
         if (transaccion1.getDetalleMonedero().getSaldo() < totalADescontar) {
             return false;
@@ -503,8 +503,9 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
     return true;
 }
 //calcular puntos por transacciones
-    public int calcularPuntosATransacciones(){
-
-    }
+public void calcularPuntosPorTransaccion(Transaccion transaccion, Cliente cliente) {
+    int puntosGanados = transaccion.calcularPuntos();
+    cliente.setPuntos(cliente.getPuntos() + puntosGanados);
+}
 }
 
