@@ -64,15 +64,7 @@ public class Monedero {
         return listaDetalleMonedero.stream().filter(detalle -> detalle.getCodigo().equals(codigo)).findFirst();
     }
 
-    public boolean crearDetalleMonedero(DetalleMonedero detalleMonedero) {
-        Optional<DetalleMonedero> CrearDetalle = buscarDetalleMonedero(detalleMonedero.getCodigo());
-        if (CrearDetalle.isPresent()) {
-            return false;
-        } else {
-            listaDetalleMonedero.add(detalleMonedero);
-            return true;
-        }
-    }
+
 
     public boolean eliminarDetalleMonedero(String codigo) {
         Optional<DetalleMonedero> detalleEncontrado = buscarDetalleMonedero(codigo);
@@ -92,6 +84,21 @@ public class Monedero {
             return true;
         }
         return false;
+    }
+
+    public void agregarDetalleMonedero(DetalleMonedero detalle) {
+        if (this.listaDetalleMonedero == null) {
+            this.listaDetalleMonedero = new ArrayList<>();
+        }
+        this.listaDetalleMonedero.add(detalle);
+        recalcularMonto();
+    }
+    public void recalcularMonto() {
+        if (listaDetalleMonedero != null) {
+            this.monto = listaDetalleMonedero.stream()
+                    .mapToDouble(DetalleMonedero::getSaldo)
+                    .sum();
+        }
     }
 
 }

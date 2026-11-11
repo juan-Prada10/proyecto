@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Arrays.stream;
+
 public class EmpresaMonedero {
 
     private String nombre;
@@ -524,7 +526,6 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
                 continue;
             }
 
-            // 1. Condición: Saldo Bajo en alguno de los monederos del cliente
             boolean tieneSaldoBajo = cliente.getMonedero().getListaDetalleMonedero() != null && cliente.getMonedero().getListaDetalleMonedero().stream()
                     .anyMatch(m -> m.getSaldo() < umbralSaldoBajo);
 
@@ -544,6 +545,36 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
                 canalesCliente.forEach(Notificacion::enviarNotificacion);
             }
         }
+    }
+
+    //crear multimonedero
+    public boolean crearMultipleMonedero(String documentoCliente, String codigoMonedero,
+                                         String codigoDetalle, String nombreDetalle, double saldoInicial) {
+        Optional<Cliente> cliente1 = buscarCliente(documentoCliente);
+
+        if (cliente1.isEmpty()) {
+            return false;
+        }
+        Cliente cliente = cliente1.get();
+
+        if (cliente.getMonedero() == null) {
+            return false;
+        }
+
+        Optional<Monedero> monederoEncontrado = buscarMonedero(codigoMonedero);
+
+        if (monederoEncontrado.isEmpty()) {
+            return false;
+        }
+
+        Monedero monedero = monederoEncontrado.get();
+
+        DetalleMonedero nuevoSubMonedero = new DetalleMonedero( nombreDetalle, codigoDetalle,saldoInicial,monedero);
+
+        monedero.getListaDetalleMonedero().add(nuevoSubMonedero);
+        monedero.recalcularMonto();
+
+        return true;
     }
 }
 

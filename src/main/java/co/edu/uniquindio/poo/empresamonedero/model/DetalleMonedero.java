@@ -11,7 +11,7 @@ public class DetalleMonedero {
     private Monedero ownedByMonedero;
     private ArrayList<Transaccion> listaTransacciones = new ArrayList<>();
 
-    public DetalleMonedero(String nombre, Monedero ownedByMonedero, double saldo, String codigo) {
+    public DetalleMonedero(String nombre, String codigo, double saldo, Monedero ownedByMonedero) {
         this.nombre = nombre;
         this.ownedByMonedero = ownedByMonedero;
         this.saldo = saldo;
