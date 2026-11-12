@@ -501,6 +501,8 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
         transaccion1.getDetalleMonedero().setSaldo(transaccion1.getDetalleMonedero().getSaldo() + transaccion1.getMonto());
     }
 
+    calcularPuntosPorTransaccion(transaccion, cliente);
+
     listaTransacciones.add(transaccion);
     return true;
 }
