@@ -12,7 +12,7 @@ public class Monedero {
     private Cliente cliente;
     private ArrayList<DetalleMonedero> listaDetalleMonedero = new ArrayList<>();
 
-    public Monedero(String codigo, double monto, EmpresaMonedero ownedByEmpresaMonedero, Cliente cliente) {
+    public Monedero(String codigo, double monto, Cliente cliente) {
         this.codigo = codigo;
         this.monto = monto;
         this.ownedByEmpresaMonedero = ownedByEmpresaMonedero;

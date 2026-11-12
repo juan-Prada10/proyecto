@@ -163,7 +163,7 @@ public class EmpresaMonederoTest{
                 "clave", "", "3000000000", documento + "@correo.com", documento,
                 "Cliente " + documento);
         Monedero monedero = new Monedero("monedero-" + documento, saldoInicial,
-                empresaMonedero, cliente);
+                 cliente);
         monedero.agregarDetalleMonedero(new DetalleMonedero("Principal",
                 "detalle-" + documento, saldoInicial, monedero));
         cliente.setMonedero(monedero);
@@ -181,6 +181,39 @@ public class EmpresaMonederoTest{
         return new Deposito(codigo, cliente, detalle, Estado.EJECUTADA,
                 monto, 0, fecha);
     }
+    //verificar que se cree monedero, multimonedero y que fallen cuando encuentran un codigo ya existente
+    @Test
+    void verificarCreacionMonedero() {
+        Cliente cliente = crearCliente("100", 1000, 0);
+        Monedero monedero = new Monedero("MON-01", 10.0,cliente);
 
+        assertTrue(empresaMonedero.crearMonedero(monedero), "Debe crear el monedero correctamente");
+
+        Optional<Monedero> encontrado = empresaMonedero.buscarMonedero("MON-01");
+        assertTrue(encontrado.isPresent(), "El monedero debe encontrarse al buscarlo por código");
+        assertEquals(monedero, encontrado.get(), "El monedero recuperado debe ser el mismo que se creó");
+
+        Monedero monederoDuplicado = new Monedero("MON-01", 50000.0,cliente);
+        assertFalse(empresaMonedero.crearMonedero(monederoDuplicado), "No debe permitir crear un monedero con código repetido");
+    }
+
+    @Test
+    void verificarCreacionMultipleMonedero() {
+
+        Cliente cliente = crearCliente("100", 1000, 0);
+        empresaMonedero.crearCliente(cliente);
+        Monedero monedero = new Monedero("MON-01", 10.0,cliente);
+        empresaMonedero.crearMonedero(monedero);
+        cliente.setMonedero(monedero);
+
+        boolean creado = empresaMonedero.crearMultipleMonedero(
+                cliente.getDocumento(), "MON-01", "DET-01", "Bolsillo Ahorros", 50000.0
+        );
+
+        // 3. Verificar que retornó true, que se añadió a la lista del monedero y que recalculó el saldo
+        assertTrue(creado, "Debe crear el submonedero cuando cliente y monedero existen y están vinculados");
+        assertEquals(1, monedero.getListaDetalleMonedero().size(), "El monedero debe tener 1 detalle registrado");
+        assertEquals(50000.0, monedero.getMonto(), "El monto total del monedero debe haberse recalculado");
+    }
     
 }
