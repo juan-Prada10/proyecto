@@ -431,30 +431,21 @@ public class EmpresaMonedero {
     // Cada ejecución crea una COPIA de la transacción base, con código y fecha propios
     private boolean ejecutar(Transaccion base, LocalDate fechaEjecucion) {
         String codigo = base.getCodigo() + "-" + fechaEjecucion;
-        boolean ok = false;
-        Transaccion copia = null;
 
         if (base instanceof Deposito) {
             Deposito d = new Deposito(codigo, base.getCliente(), base.getDetalleMonedero(),
                     Estado.EJECUTADA, base.getMonto(), base.getComision(), fechaEjecucion);
-            ok = deposito(d);
-            copia = d;
+            return deposito(d);
         } else if (base instanceof Retiro) {
             Retiro r = new Retiro(codigo, base.getCliente(), base.getDetalleMonedero(),
                     Estado.EJECUTADA, this, base.getMonto(), base.getComision(), fechaEjecucion);
-            ok = retiro(r);
-            copia = r;
+            return retiro(r);
         } else if (base instanceof Transferencia) {
             Transferencia t = new Transferencia(codigo, base.getCliente(), base.getDetalleMonedero(),
                     Estado.EJECUTADA, base.getMonto(), base.getComision(), fechaEjecucion);
-            ok = transferencia(t, base.getDetalleMonedero().getCodigo());
-            copia = t;
+            return transferencia(t, base.getDetalleMonedero().getCodigo());
         }
-
-        if (ok) {
-            calcularPuntosPorTransaccion(copia, copia.getCliente());
-        }
-        return ok;
+        return false;
     }
 //crear descuento por puntos
 public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int puntosACanjear) {
