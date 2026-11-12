@@ -43,6 +43,32 @@ public class EmpresaMonederoTest{
         assertTrue(tx3.isPresent());
         assertInstanceOf(Deposito.class, tx3.get(), "TX-03 debe ser instancia de Deposito");
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+    //verificar que salga error al añadir cualquier transaccion con el mismo codigo
+    @Test
+    void verificarCodigoDuplicado() {
+        Transferencia transferenciaOriginal = new Transferencia("TX-01", cliente, detalleMonedero, Estado.EJECUTADA, 50600.5, 600, LocalDate.now());
+        assertTrue(empresaMonedero.crearTransferencia(transferenciaOriginal), "Debe registrar la primera transacción");
+
+        Transferencia transferenciaDuplicada = new Transferencia("TX-01", cliente, detalleMonedero, Estado.EJECUTADA, 10000.0, 100, LocalDate.now());
+        Retiro retiroDuplicado = new Retiro("TX-01", cliente, detalleMonedero, Estado.EJECUTADA, 20000.5, 200, LocalDate.now());
+        Deposito depositoDuplicado = new Deposito("TX-01", cliente, detalleMonedero, Estado.EJECUTADA, 600.8, 400, LocalDate.now());
+
+        assertFalse(empresaMonedero.crearTransferencia(transferenciaDuplicada), "No debe permitir otra Transferencia con el mismo código");
+        assertFalse(empresaMonedero.crearRetiro(retiroDuplicado), "No debe permitir un Retiro con el mismo código");
+        assertFalse(empresaMonedero.crearDeposito(depositoDuplicado), "No debe permitir un Depósito con el mismo código");
+
+        Optional<Transaccion> guardada = empresaMonedero.buscarTransaccion("TX-01");
+        assertTrue(guardada.isPresent());
+        assertInstanceOf(Transferencia.class, guardada.get(), "Debe mantenerse la Transferencia original");
+    }
+
+    
+}
+=======
+>>>>>>> Stashed changes
 
     //test para verificar que el saldo refleja los depósitos y retiros
     @Test
@@ -163,6 +189,7 @@ public class EmpresaMonederoTest{
         return new Deposito(codigo, cliente, detalle, Estado.EJECUTADA,
                 monto, 0, fecha);
     }
+<<<<<<< Updated upstream
     //verificar que salga error al añadir cualquier transaccion con el mismo codigo
     @Test
     void verificarCodigoDuplicado() {
@@ -182,3 +209,8 @@ public class EmpresaMonederoTest{
         assertInstanceOf(Transferencia.class, guardada.get(), "Debe mantenerse la Transferencia original");
     }
 }
+=======
+
+}
+>>>>>>> bb2433c3eef4817a3c0e394506d9d47b644a549f
+>>>>>>> Stashed changes
