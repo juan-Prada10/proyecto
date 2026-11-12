@@ -151,15 +151,11 @@ public class EmpresaMonedero {
 
     public boolean crearTransferencia(Transferencia transferencia) {
         Optional<Transaccion> transaccionEncontrada = buscarTransaccion(transferencia.getCodigo());
-        if (!transaccionEncontrada.isPresent()) {
-            if (transaccionEncontrada.get() instanceof Transferencia) {
-                listaTransacciones.add(transaccionEncontrada.get());
-                return true;
-            }
-            return false;
+        if (transaccionEncontrada.isEmpty()) {
+            listaTransacciones.add(transferencia);
+            return true;
         }
         return false;
-
     }
 
     public boolean eliminarTransaccion(String codigo) {
@@ -190,16 +186,12 @@ public class EmpresaMonedero {
     }
 
     public boolean crearRetiro(Retiro retiro) {
-        Optional<Transaccion> transaccionEncontrada = buscarTransaccion(retiro.getCodigo());
-        if (!transaccionEncontrada.isPresent()) {
-            if (transaccionEncontrada.get() instanceof Retiro) {
-                listaTransacciones.add(transaccionEncontrada.get());
-                return true;
-            }
-            return false;
+        Optional<Transaccion> retiroEncontrada = buscarTransaccion(retiro.getCodigo());
+        if (retiroEncontrada.isEmpty()) {
+            listaTransacciones.add(retiro);
+            return true;
         }
         return false;
-
     }
 
     public boolean actualizarRetiro(String codigo, Retiro retiroNuevo) {
@@ -221,16 +213,12 @@ public class EmpresaMonedero {
     }
 
     public boolean crearDeposito(Deposito deposito) {
-        Optional<Transaccion> transaccionEncontrada = buscarTransaccion(deposito.getCodigo());
-        if (!transaccionEncontrada.isPresent()) {
-            if (transaccionEncontrada.get() instanceof Deposito) {
-                listaTransacciones.add(transaccionEncontrada.get());
-                return true;
-            }
-            return false;
+        Optional<Transaccion> depositoEncontrado = buscarTransaccion(deposito.getCodigo());
+        if (depositoEncontrado.isEmpty()) {
+            listaTransacciones.add(deposito);
+            return true;
         }
         return false;
-
     }
 
     public boolean actualizarDeposito(String codigo, Deposito depositoNuevo) {
