@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Retiro extends Transaccion{
 
-    public Retiro(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, double monto, double comision, LocalDate fecha) {
+    public Retiro(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero empresaMonedero, double monto, double comision, LocalDate fecha) {
         super(codigo, cliente, detalleMonedero, estado, monto, comision, fecha);
     }
 

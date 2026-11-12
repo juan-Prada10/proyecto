@@ -415,7 +415,7 @@ public class EmpresaMonedero {
 
             while (tp.getEstado() == Estado.PENDIENTE && !tp.getFecha().isAfter(fechaActual)) {
 
-                if (!ejecutar(tp.getTipoTransaccion())) {
+                if (!ejecutar(tp.getTipoTransaccion(), tp.getFecha())) {
                     break;
                 }
 
@@ -428,18 +428,33 @@ public class EmpresaMonedero {
         }
     }
 
-    private boolean ejecutar(Transaccion t) {
-        if (t instanceof Deposito) {
-            return deposito((Deposito) t);
+    // Cada ejecución crea una COPIA de la transacción base, con código y fecha propios
+    private boolean ejecutar(Transaccion base, LocalDate fechaEjecucion) {
+        String codigo = base.getCodigo() + "-" + fechaEjecucion;
+        boolean ok = false;
+        Transaccion copia = null;
+
+        if (base instanceof Deposito) {
+            Deposito d = new Deposito(codigo, base.getCliente(), base.getDetalleMonedero(),
+                    Estado.EJECUTADA, base.getMonto(), base.getComision(), fechaEjecucion);
+            ok = deposito(d);
+            copia = d;
+        } else if (base instanceof Retiro) {
+            Retiro r = new Retiro(codigo, base.getCliente(), base.getDetalleMonedero(),
+                    Estado.EJECUTADA, this, base.getMonto(), base.getComision(), fechaEjecucion);
+            ok = retiro(r);
+            copia = r;
+        } else if (base instanceof Transferencia) {
+            Transferencia t = new Transferencia(codigo, base.getCliente(), base.getDetalleMonedero(),
+                    Estado.EJECUTADA, base.getMonto(), base.getComision(), fechaEjecucion);
+            ok = transferencia(t, base.getDetalleMonedero().getCodigo());
+            copia = t;
         }
-        if (t instanceof Retiro) {
-            return retiro((Retiro) t);
+
+        if (ok) {
+            calcularPuntosPorTransaccion(copia, copia.getCliente());
         }
-        if (t instanceof Transferencia) {
-            Transferencia tr = (Transferencia) t;
-            return transferencia(tr, tr.getDetalleMonedero().getCodigo());
-        }
-        return false;
+        return ok;
     }
 //crear descuento por puntos
 public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int puntosACanjear) {
@@ -491,6 +506,8 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
 
         transaccion1.getDetalleMonedero().setSaldo(transaccion1.getDetalleMonedero().getSaldo() + transaccion1.getMonto());
     }
+
+    calcularPuntosPorTransaccion(transaccion, cliente);
 
     listaTransacciones.add(transaccion);
     return true;
