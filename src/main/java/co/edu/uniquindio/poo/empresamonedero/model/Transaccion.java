@@ -17,7 +17,7 @@ public abstract class Transaccion {
     private ArrayList<TransaccionProgramada> listaTransaccionProgramadas = new ArrayList<>();
     private ArrayList<AnalizadorTransaccion> listaAnalizadorTransacciones =  new ArrayList<>();
 
-    public Transaccion(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, EmpresaMonedero ownedByEmpresaMonedero, double monto, double comision, LocalDate fecha) {
+    public Transaccion(String codigo, Cliente cliente, DetalleMonedero detalleMonedero, Estado estado, double monto, double comision, LocalDate fecha) {
         this.codigo = codigo;
         this.cliente = cliente;
         this.detalleMonedero = detalleMonedero;
