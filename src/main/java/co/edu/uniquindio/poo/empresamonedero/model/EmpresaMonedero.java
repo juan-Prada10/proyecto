@@ -244,6 +244,8 @@ public class EmpresaMonedero {
     public boolean deposito(Deposito deposito) {
         if (crearDeposito(deposito)) {
             deposito.getDetalleMonedero().setSaldo(deposito.getDetalleMonedero().getSaldo() + deposito.getMonto());
+            int puntos = (int)deposito.getMonto()/100;
+            asignarPuntosConBono(deposito.getCliente(),puntos);
             return true;
         }
         return false;
@@ -255,6 +257,8 @@ public class EmpresaMonedero {
         if (retiro.getMonto() <= retiro.getDetalleMonedero().getSaldo()) {
             if (crearRetiro(retiro)) {
                 retiro.getDetalleMonedero().setSaldo(retiro.getDetalleMonedero().getSaldo() - retiro.getMonto());
+                int puntos = (int)(retiro.getMonto()/100)*2;
+                asignarPuntosConBono(retiro.getCliente(),puntos);
                 return true;
             }
             return false;
@@ -272,6 +276,8 @@ public class EmpresaMonedero {
                         flatMap(monedero -> monedero.getListaDetalleMonedero().stream().
                                 filter(d -> d.getCodigo().equals(codigoMonedero))).findFirst();
                 monederoDestino.get().setSaldo(monederoDestino.get().getSaldo() + transferencia.getMonto());
+                int puntos = (int)(transferencia.getMonto()/100)*3;
+                asignarPuntosConBono(transferencia.getCliente(),puntos);
                 return true;
             }
             return false;
