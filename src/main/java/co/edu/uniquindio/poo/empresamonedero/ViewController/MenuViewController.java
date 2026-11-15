@@ -3,14 +3,14 @@ package co.edu.uniquindio.poo.empresamonedero.ViewController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.MenuController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
 public class MenuViewController {
-    Aplicaccion aplicaccion;
+    Aplicacion aplicacion;
     MenuController menuController;
 
     @FXML
@@ -51,47 +51,47 @@ public class MenuViewController {
 
     @FXML
     void depositoEvent(ActionEvent event) {
-        aplicaccion.openDeposito();
+        aplicacion.openDeposito();
 
     }
 
     @FXML
     void retiroEvent(ActionEvent event) {
-        aplicaccion.openDeposito();
+        aplicacion.openDeposito();
 
     }
 
     @FXML
     void transferenciaEvent(ActionEvent event) {
-        aplicaccion.openTransferencia();
+        aplicacion.openTransferencia();
 
     }
 
     @FXML
     void consultarSaldoEvent(ActionEvent event) {
-        aplicaccion.openSaldo();
+        aplicacion.openSaldo();
 
     }
 
     @FXML
     void consultarTransaccionesEvent(ActionEvent event) {
-        aplicaccion.openHistorial();
+        aplicacion.openHistorial();
 
     }
 
     @FXML
     void consultarPuntosEvent(ActionEvent event) {
-        aplicaccion.openPuntos();
+        aplicacion.openPuntos();
     }
 
     @FXML
     void consultarRangoEvent(ActionEvent event) {
-        aplicaccion.openRango();
+        aplicacion.openRango();
     }
 
     @FXML
     void canjearBeneficiosEvent(ActionEvent event) {
-        aplicaccion.canjearBeneficios();
+        aplicacion.canjearBeneficios();
 
     }
 
@@ -107,9 +107,9 @@ public class MenuViewController {
 
 
 
-    public void setApp(Aplicaccion aplicaccion){
-        this.aplicaccion = aplicaccion;
-        menuController=new MenuController(aplicaccion.empresaMonedero);
+    public void setApp(Aplicacion aplicacion){
+        this.aplicacion = aplicacion;
+        menuController=new MenuController(aplicacion.empresaMonedero);
     }
 
     @FXML

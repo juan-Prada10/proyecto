@@ -4,7 +4,7 @@ package co.edu.uniquindio.poo.empresamonedero.ViewController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.SaldoTotalController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -14,12 +14,12 @@ import javafx.event.ActionEvent;
 
 public class SaldoTotalViewController {
 
-    private Aplicaccion aplicaccion;
+    private Aplicacion aplicacion;
     private SaldoTotalController saldoTotalController;
 
-    public void setApp(Aplicaccion aplicaccion){
-        this.aplicaccion=aplicaccion;
-        saldoTotalController = new SaldoTotalController(aplicaccion.empresaMonedero);
+    public void setApp(Aplicacion aplicacion){
+        this.aplicacion=aplicacion;
+        saldoTotalController = new SaldoTotalController(aplicacion.empresaMonedero);
     }
 
     @FXML

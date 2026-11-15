@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="225.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.PuntosViewController">
+<AnchorPane prefHeight="225.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.PuntosViewController">
    <children>
-      <Text layoutX="24.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese su documento para consultar sus puntos " />
+      <Text layoutX="57.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese su documento para consultar sus puntos " />
       <TextField fx:id="txtDocumento" layoutX="103.0" layoutY="88.0" promptText="Documento" />
       <Button fx:id="btnConsultar" layoutX="146.0" layoutY="151.0" mnemonicParsing="false" onAction="#consultarEvent" text="Consultar" />
    </children>

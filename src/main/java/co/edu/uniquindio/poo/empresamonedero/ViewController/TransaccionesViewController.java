@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo.empresamonedero.ViewController;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.TransaccionesController;
 import co.edu.uniquindio.poo.empresamonedero.model.Transaccion;
 import javafx.event.ActionEvent;
@@ -15,12 +15,12 @@ import javafx.scene.control.TextField;
 
 public class TransaccionesViewController {
 
-    private Aplicaccion aplicaccion;
+    private Aplicacion aplicacion;
     private TransaccionesController transaccionesController;
 
-    public void setApp(Aplicaccion aplicaccion){
-        this.aplicaccion=aplicaccion;
-        transaccionesController= new TransaccionesController(aplicaccion.empresaMonedero);
+    public void setApp(Aplicacion aplicacion){
+        this.aplicacion=aplicacion;
+        transaccionesController= new TransaccionesController(aplicacion.empresaMonedero);
     }
 
     @FXML

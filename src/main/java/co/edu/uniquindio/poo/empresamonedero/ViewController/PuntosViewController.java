@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo.empresamonedero.ViewController;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.PuntosController;
 import co.edu.uniquindio.poo.empresamonedero.model.EmpresaMonedero;
 import javafx.event.ActionEvent;
@@ -13,12 +13,12 @@ import javafx.scene.control.TextField;
 
 public class PuntosViewController {
 
-    private Aplicaccion aplicaccion;
+    private Aplicacion aplicacion;
     private PuntosController puntosController;
 
-    public void setApp(Aplicaccion aplicaccion){
-        this.aplicaccion=aplicaccion;
-        puntosController= new PuntosController(aplicaccion.empresaMonedero);
+    public void setApp(Aplicacion aplicacion){
+        this.aplicacion=aplicacion;
+        puntosController= new PuntosController(aplicacion.empresaMonedero);
     }
 
     @FXML
@@ -64,5 +64,6 @@ public class PuntosViewController {
         assert txtDocumento != null : "fx:id=\"txtDocumento\" was not injected: check your FXML file 'Puntos.fxml'.";
 
     }
+
 }
 

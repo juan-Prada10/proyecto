@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.DepositoController;
 import co.edu.uniquindio.poo.empresamonedero.model.Deposito;
 import co.edu.uniquindio.poo.empresamonedero.model.DetalleMonedero;
@@ -19,12 +19,12 @@ import javafx.event.ActionEvent;
 
 public class DepositoViewController {
 
-    private Aplicaccion aplicacion;
+    private Aplicacion aplicacion;
     private DepositoController depositoController;
 
-    public void setApp(Aplicaccion aplicaccion){
-        this.aplicacion=aplicaccion;
-        depositoController = new DepositoController(aplicaccion.empresaMonedero);
+    public void setApp(Aplicacion aplicacion){
+        this.aplicacion=aplicacion;
+        depositoController = new DepositoController(aplicacion.empresaMonedero);
     }
 
     @FXML
