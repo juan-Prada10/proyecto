@@ -3,14 +3,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.RetiroViewController">
+<AnchorPane prefHeight="309.0" prefWidth="314.0" style="-fx-background-color: #000000; -fx-prompt-text-fill: #000000;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.RetiroViewController">
    <children>
-      <Text layoutX="196.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresela informacion del retiro" />
-      <TextField fx:id="txtCodigoMonedero" layoutX="206.0" layoutY="134.0" promptText="Codigo del monedero" />
-      <TextField fx:id="txtMonto" layoutX="207.0" layoutY="191.0" promptText="Monto" />
-      <Button fx:id="btnRetiro" layoutX="255.0" layoutY="277.0" mnemonicParsing="false" onAction="#retiroEvent" text="Realizar retiro" />
-      <TextField fx:id="txtCodigoRetiro" layoutX="207.0" layoutY="76.0" promptText="codigo del retiro" />
+      <Text fill="#ffdd00" layoutX="37.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la informacion del retiro">
+         <font>
+            <Font name="Agency FB" size="24.0" />
+         </font></Text>
+      <TextField fx:id="txtCodigoMonedero" alignment="CENTER" layoutX="82.0" layoutY="129.0" promptText="Codigo del monedero" style="-fx-prompt-text-fill: #716414;" />
+      <TextField fx:id="txtMonto" alignment="CENTER" layoutX="82.0" layoutY="173.0" promptText="Monto" style="-fx-prompt-text-fill: #716414;" />
+      <Button fx:id="btnRetiro" layoutX="112.0" layoutY="227.0" mnemonicParsing="false" onAction="#retiroEvent" style="-fx-background-color: ffdd00;" text="Realizar retiro" />
+      <TextField fx:id="txtCodigoRetiro" alignment="CENTER" layoutX="82.0" layoutY="89.0" promptText="Código del retiro" style="-fx-prompt-text-fill: #716414;" />
    </children>
 </AnchorPane>

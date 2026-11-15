@@ -22,7 +22,7 @@ public class Aplicacion extends Application {
     }
 
     private void openViewPrincipal() {
-        inicializarData();
+
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/empresamonedero/Menu.fxml"));
@@ -39,10 +39,10 @@ public class Aplicacion extends Application {
         }
     }
 
-    private void inicializarData() {
-    }
+
 
     public void canjearBeneficios() {
+        //falta
     }
 
 
@@ -164,7 +164,7 @@ public class Aplicacion extends Application {
             e.printStackTrace();
         }
     }
-<<<<<<< HEAD
+
 
     public void openBeneficios() {
         try {
@@ -221,11 +221,7 @@ public class Aplicacion extends Application {
         
     }
 
-
-
-
-=======
->>>>>>> 7047f54e18d449a43085ec20c789b8a8bac4bc86
+    
     public static void main(String[] args) {
         launch();
     }
