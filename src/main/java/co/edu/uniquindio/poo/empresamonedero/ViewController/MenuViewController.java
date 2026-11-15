@@ -29,6 +29,12 @@ public class MenuViewController {
     private Button btnConsultarHistorialTransacciones;
 
     @FXML
+    private Button btnTransaccionProgramada;
+
+    @FXML
+    private Button btnMonedero;
+
+    @FXML
     private Button btnCanjearBeneficios;
 
     @FXML
@@ -88,6 +94,18 @@ public class MenuViewController {
         aplicaccion.canjearBeneficios();
 
     }
+
+    @FXML
+    void MonederoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void transaccionProgramadaEvent(ActionEvent event) {
+
+    }
+
+
 
     public void setApp(Aplicaccion aplicaccion){
         this.aplicaccion = aplicaccion;
