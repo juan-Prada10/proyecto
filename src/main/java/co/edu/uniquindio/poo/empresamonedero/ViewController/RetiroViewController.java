@@ -5,7 +5,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.RetiroController;
 import co.edu.uniquindio.poo.empresamonedero.model.Deposito;
 import co.edu.uniquindio.poo.empresamonedero.model.DetalleMonedero;
@@ -19,12 +19,12 @@ import javafx.event.ActionEvent;
 
 public class RetiroViewController {
 
-    private Aplicaccion aplicaccion;
+    private Aplicacion aplicacion;
     private RetiroController retiroController;
 
-    public void setApp(Aplicaccion aplicaccion){
-        this.aplicaccion=aplicaccion;
-        retiroController= new RetiroController(aplicaccion.empresaMonedero);
+    public void setApp(Aplicacion aplicacion){
+        this.aplicacion=aplicacion;
+        retiroController= new RetiroController(aplicacion.empresaMonedero);
     }
 
     @FXML
@@ -62,7 +62,7 @@ public class RetiroViewController {
             mostrarMensaje("Informacion", "El monedero no existe", Alert.AlertType.WARNING);
         }else{
 
-            Retiro retiro = new Retiro(codigoRetiro,null,detalleEncontrado, Estado.EJECUTADA,aplicaccion.empresaMonedero,monto,0, LocalDate.now());
+            Retiro retiro = new Retiro(codigoRetiro,null,detalleEncontrado, Estado.EJECUTADA,aplicacion.empresaMonedero,monto,0, LocalDate.now());
             if(retiroController.crearRetiro(retiro)){
                 mostrarMensaje("Informacion", "El retiro se realizo con exito", Alert.AlertType.WARNING);
             }else{mostrarMensaje("Informacion","No se pudo realizar el retiro", Alert.AlertType.WARNING);}}

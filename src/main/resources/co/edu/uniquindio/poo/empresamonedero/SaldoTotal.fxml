@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="230.0" prefWidth="378.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.SaldoTotalViewController">
+<AnchorPane prefHeight="230.0" prefWidth="378.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.SaldoTotalViewController">
    <children>
       <Text layoutX="121.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consultar saldo total" />
-      <TextField fx:id="txtCodigoMonedero" layoutX="78.0" layoutY="100.0" prefHeight="31.0" prefWidth="229.0" promptText="Ingrese el codigo del monedero" />
+      <TextField fx:id="txtCodigoMonedero" layoutX="61.0" layoutY="83.0" prefHeight="31.0" prefWidth="229.0" promptText="Ingrese el codigo del monedero" />
       <Button fx:id="btnConsultar" layoutX="149.0" layoutY="166.0" mnemonicParsing="false" onAction="#consultarEvent" text="consultar" />
    </children>
 </AnchorPane>

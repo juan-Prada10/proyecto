@@ -25,7 +25,7 @@ public class Aplicaccion extends Application {
         inicializarData();
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Menu.fxml"));
+            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/empresamonedero/Menu.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             MenuViewController menuViewController= loader.getController();
             menuViewController.setApp(this);
@@ -38,6 +38,13 @@ public class Aplicaccion extends Application {
             e.printStackTrace();
         }
     }
+
+    private void inicializarData() {
+    }
+
+    public void canjearBeneficios() {
+    }
+
 
     public void openDeposito() {
         try {
@@ -157,6 +164,7 @@ public class Aplicaccion extends Application {
             e.printStackTrace();
         }
     }
+<<<<<<< HEAD
 
     public void openBeneficios() {
         try {
@@ -216,6 +224,12 @@ public class Aplicaccion extends Application {
 
 
 
+=======
+>>>>>>> 7047f54e18d449a43085ec20c789b8a8bac4bc86
     public static void main(String[] args) {
         launch();
-    }}
+    }
+
+
+}
+

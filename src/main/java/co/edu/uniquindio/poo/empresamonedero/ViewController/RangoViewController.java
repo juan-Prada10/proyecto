@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo.empresamonedero.ViewController;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.RangoController;
 import co.edu.uniquindio.poo.empresamonedero.model.Cliente;
 import javafx.event.ActionEvent;
@@ -13,12 +13,12 @@ import javafx.scene.control.TextField;
 
 public class RangoViewController {
 
-    private Aplicaccion aplicaccion;
+    private Aplicacion aplicacion;
     private RangoController rangoController;
 
-    public void setApp(Aplicaccion aplicaccion){
-        this.aplicaccion=aplicaccion;
-        rangoController = new RangoController(aplicaccion.empresaMonedero);
+    public void setApp(Aplicacion aplicacion){
+        this.aplicacion=aplicacion;
+        rangoController = new RangoController(aplicacion.empresaMonedero);
     }
 
     @FXML

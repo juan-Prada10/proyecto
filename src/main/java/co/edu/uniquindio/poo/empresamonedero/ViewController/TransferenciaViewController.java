@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.TransferenciaController;
 import co.edu.uniquindio.poo.empresamonedero.model.DetalleMonedero;
 import co.edu.uniquindio.poo.empresamonedero.model.Estado;
@@ -18,12 +18,12 @@ import javafx.event.ActionEvent;
 
 public class TransferenciaViewController {
 
-    private Aplicaccion aplicaccion;
+    private Aplicacion aplicacion;
     private TransferenciaController transferenciaController;
 
-    public void setApp(Aplicaccion aplicaccion){
-        this.aplicaccion=aplicaccion;
-        transferenciaController= new TransferenciaController(aplicaccion.empresaMonedero);
+    public void setApp(Aplicacion aplicacion){
+        this.aplicacion=aplicacion;
+        transferenciaController= new TransferenciaController(aplicacion.empresaMonedero);
     }
 
     @FXML
