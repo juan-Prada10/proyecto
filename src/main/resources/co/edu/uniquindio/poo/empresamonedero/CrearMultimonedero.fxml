@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.CrearMultimonederoViewController">
+   <children>
+      <Text layoutX="229.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Crear multimonedero" />
+      <TextField fx:id="txtDocumento" layoutX="207.0" layoutY="88.0" promptText="Documento cliente" />
+      <TextField fx:id="txtCodigoMonedero" layoutX="207.0" layoutY="143.0" promptText="Codigo monedero" />
+      <TextField fx:id="txtMultiMonederoCodigo" layoutX="207.0" layoutY="200.0" promptText="Codigo multimonedero" />
+      <TextField fx:id="txtNombre" layoutX="207.0" layoutY="252.0" prefHeight="31.0" prefWidth="187.0" promptText="Nombre nuevo multimonedero" />
+      <TextField fx:id="txtSaldoInicial" layoutX="207.0" layoutY="306.0" promptText="Saldo inicial" />
+      <Button fx:id="btnCrear" layoutX="273.0" layoutY="355.0" mnemonicParsing="false" onAction="#crearEvent" text="Crear" />
+   </children>
+</AnchorPane>
