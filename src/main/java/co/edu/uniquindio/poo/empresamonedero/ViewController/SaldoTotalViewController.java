@@ -45,7 +45,7 @@ public class SaldoTotalViewController {
         if (saldoTotalController.saldoTotal(codigo).isEmpty()){
             mostrarMensaje("Informacion","No hay un monedero con este codigo", Alert.AlertType.WARNING);
         }else {saldo= saldoTotalController.saldoTotal(codigo).get();
-            mostrarMensaje("Informacion"," Su saldo es de "+ saldo, Alert.AlertType.WARNING);}
+            mostrarMensaje("Informacion"," Su saldo es de "+ saldo +"$", Alert.AlertType.WARNING);}
     }
 
     public void mostrarMensaje(String titulo, String mensaje, Alert.AlertType alertType){
