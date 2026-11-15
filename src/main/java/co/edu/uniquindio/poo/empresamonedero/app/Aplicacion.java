@@ -22,7 +22,7 @@ public class Aplicacion extends Application {
     }
 
     private void openViewPrincipal() {
-
+        inicializarData();
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/empresamonedero/Menu.fxml"));
@@ -221,7 +221,7 @@ public class Aplicacion extends Application {
         
     }
 
-    
+
     public static void main(String[] args) {
         launch();
     }
