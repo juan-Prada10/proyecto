@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.TransaccionProgramadaViewController">
+   <children>
+      <Text layoutX="218.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaccion programada" />
+      <TextField fx:id="txtCodigo" layoutX="207.0" layoutY="80.0" promptText="Codigo transaccion" />
+      <TextField fx:id="txtRecurrencia" layoutX="207.0" layoutY="127.0" promptText="Recurrencia" />
+      <TextField fx:id="txtFecha" layoutX="207.0" layoutY="178.0" promptText="fecha" />
+      <TextField fx:id="txtMonto" layoutX="207.0" layoutY="230.0" promptText="Monto" />
+      <Button fx:id="btnCrear" layoutX="272.0" layoutY="295.0" mnemonicParsing="false" onAction="#crearEvent" text="Crear" />
+   </children>
+</AnchorPane>

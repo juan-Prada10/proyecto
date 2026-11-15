@@ -5,7 +5,6 @@ import co.edu.uniquindio.poo.empresamonedero.controller.TransaccionesController;
 import co.edu.uniquindio.poo.empresamonedero.model.Transaccion;
 import javafx.event.ActionEvent;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;

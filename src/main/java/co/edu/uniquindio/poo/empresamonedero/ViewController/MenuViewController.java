@@ -91,25 +91,24 @@ public class MenuViewController {
 
     @FXML
     void canjearBeneficiosEvent(ActionEvent event) {
-        aplicacion.canjearBeneficios();
+        aplicacion.openBeneficios();
 
     }
 
     @FXML
     void MonederoEvent(ActionEvent event) {
+        aplicacion.openCrearMultimonedero();
 
     }
 
     @FXML
     void transaccionProgramadaEvent(ActionEvent event) {
-
+        aplicacion.openProgramada();
     }
 
-
-
-    public void setApp(Aplicacion aplicacion){
-        this.aplicacion = aplicacion;
-        menuController=new MenuController(aplicacion.empresaMonedero);
+    public void setApp(Aplicacion aplicaccion) {
+        this.aplicacion = aplicaccion;
+        menuController = new MenuController(aplicaccion.empresaMonedero);
     }
 
     @FXML

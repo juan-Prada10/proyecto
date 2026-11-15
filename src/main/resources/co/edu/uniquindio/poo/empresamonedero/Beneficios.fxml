@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.BeneficiosViewController">
+   <children>
+      <Text layoutX="202.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Centro de canje de puntos" />
+      <TextField fx:id="txtCodigo" layoutX="193.0" layoutY="178.0" promptText="Codigo Transaccion" />
+      <TextField fx:id="txtDocumento" layoutX="193.0" layoutY="233.0" promptText="Documento" />
+      <TextField fx:id="txtPuntos" layoutX="196.0" layoutY="288.0" promptText="Puntos a canjear" />
+      <Button fx:id="btnCanjear" layoutX="265.0" layoutY="349.0" mnemonicParsing="false" onAction="#canjearEvent" text="Canjear" />
+      <Text layoutX="276.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text layoutX="29.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Canjea 100 puntos para reducir la comicion un 10%" />
+      <Text layoutX="37.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Canjea 500 puntos para no tener cargos por retiros por un mes" />
+      <Text layoutX="37.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Canjea 1000 puntos para un bono de saldo de 50 unidades en el monedero" />
+      <Separator layoutX="190.0" layoutY="60.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

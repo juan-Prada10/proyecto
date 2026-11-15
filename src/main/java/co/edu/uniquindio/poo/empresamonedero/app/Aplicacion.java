@@ -164,6 +164,68 @@ public class Aplicacion extends Application {
             e.printStackTrace();
         }
     }
+<<<<<<< HEAD
+
+    public void openBeneficios() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Beneficios.fxml"));
+            javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
+            BeneficiosViewController beneficiosViewController= loader.getController();
+            beneficiosViewController.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void openCrearMultimonedero() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/CrearMultimonedero.fxml"));
+            javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
+            CrearMultimonederoViewController crearMultimonederoViewController= loader.getController();
+            crearMultimonederoViewController.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void openProgramada() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/TransaccionProgramada.fxml"));
+            javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
+            TransaccionProgramadaViewController transaccionProgramadaViewController= loader.getController();
+            transaccionProgramadaViewController.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void inicializarData(){
+        
+    }
+
+
+
+
+=======
+>>>>>>> 7047f54e18d449a43085ec20c789b8a8bac4bc86
     public static void main(String[] args) {
         launch();
     }

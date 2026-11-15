@@ -2,7 +2,6 @@ package co.edu.uniquindio.poo.empresamonedero.ViewController;
 
 import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.PuntosController;
-import co.edu.uniquindio.poo.empresamonedero.model.EmpresaMonedero;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
