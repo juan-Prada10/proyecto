@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.DepositoViewController">
+   <children>
+      <Text layoutX="201.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese los datos del deposito" />
+      <TextField fx:id="txtMonto" layoutX="201.0" layoutY="200.0" promptText="monto" />
+      <TextField fx:id="txtCodigoMonedero" layoutX="201.0" layoutY="155.0" promptText="codigo del monedero" />
+      <Button fx:id="btnCrearDeposito" layoutX="236.0" layoutY="301.0" mnemonicParsing="false" onAction="#crearDepositoEvent" text="Crear deposito" />
+      <TextField fx:id="txtDeposito" layoutX="201.0" layoutY="105.0" promptText="Codigo del deposito" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.MenuViewController">
+   <children>
+      <Text layoutX="196.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vienvenido al monedero virtual" />
+      <Text layoutX="159.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione que funcion le gustaria realizar " />
+      <Button fx:id="btnDeposito" layoutX="470.0" layoutY="136.0" mnemonicParsing="false" onAction="#depositoEvent" text="Deposito" />
+      <Button fx:id="btnRetiro" layoutX="470.0" layoutY="185.0" mnemonicParsing="false" onAction="#retiroEvent" text="Retiro" />
+      <Button fx:id="btnTransferencia" layoutX="470.0" layoutY="235.0" mnemonicParsing="false" onAction="#transferenciaEvent" text="Transferencia" />
+      <Button fx:id="btnConsultarSaldo" layoutX="309.0" layoutY="266.0" mnemonicParsing="false" onAction="#consultarSaldoEvent" text="consultar saldo" />
+      <Button fx:id="btnConsultarHistorialTransacciones" layoutX="274.0" layoutY="323.0" mnemonicParsing="false" onAction="#consultarTransaccionesEvent" text="Consultar historial" />
+      <Button fx:id="btnConsultarPuntos" layoutX="86.0" layoutY="120.0" mnemonicParsing="false" onAction="#consultarPuntosEvent" text="conslutar puntos" />
+      <Button fx:id="btnConsultarRango" layoutX="113.0" layoutY="179.0" mnemonicParsing="false" onAction="#consultarRangoEvent" text="consultar rango" />
+      <Button fx:id="btnCanjearBeneficios" layoutX="131.0" layoutY="250.0" mnemonicParsing="false" onAction="#canjearBeneficiosEvent" text="Canjear beneficios" />
+      <Text layoutX="627.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Button fx:id="btnMonedero" layoutX="468.0" layoutY="282.0" mnemonicParsing="false" onAction="#MonederoEvent" text="crear monedero" />
+      <Button fx:id="btnTransaccionProgramada" layoutX="468.0" layoutY="331.0" mnemonicParsing="false" onAction="#transaccionProgramadaEvent" text="Transaccion programada" />
+   </children>
+</AnchorPane>

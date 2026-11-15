@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.empresamonedero.model;
 
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Monedero {
 
@@ -99,6 +100,10 @@ public class Monedero {
                     .mapToDouble(DetalleMonedero::getSaldo)
                     .sum();
         }
+    }
+
+    public double calcularSaldo(){
+        return listaDetalleMonedero.stream().mapToDouble(detalle->detalle.getSaldo()).sum();
     }
 
 }
