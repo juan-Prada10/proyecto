@@ -580,7 +580,11 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
     }
 
     public Optional<DetalleMonedero> buscarDetalleMonedero(String codigo){
-        return buscarDetalleMonedero(codigo);
+        return listaMonederos.stream()
+                .map(monedero -> monedero.buscarDetalleMonedero(codigo))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .findFirst();
     }
 
 
@@ -591,6 +595,9 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
         }else{return clienteEncontrado.get().getPuntos();}
     }
 
+    public void detalle(DetalleMonedero detalleMonedero){
+        detalleMonedero.getOwnedByMonedero().agregarDetalleMonedero(detalleMonedero);
+    }
 
 
 }

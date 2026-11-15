@@ -57,7 +57,7 @@ public class MenuViewController {
 
     @FXML
     void retiroEvent(ActionEvent event) {
-        aplicacion.openDeposito();
+        aplicacion.openRetiro();
 
     }
 
