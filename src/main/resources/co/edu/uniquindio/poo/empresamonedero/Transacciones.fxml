@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="235.0" prefWidth="518.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.empresamonedero.ViewController.TransaccionesViewController">
+   <children>
+      <Text layoutX="63.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese los datos para consultar el historial de transacciones" />
+      <TextField fx:id="txtDocumento" layoutX="166.0" layoutY="87.0" promptText="ingrese el documento" />
+      <Button fx:id="btnHistorial" layoutX="218.0" layoutY="165.0" mnemonicParsing="false" onAction="#historialEvent" text="Consultar" />
+   </children>
+</AnchorPane>

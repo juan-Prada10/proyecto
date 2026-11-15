@@ -109,4 +109,13 @@ public abstract class Transaccion {
     }
 
     public abstract int calcularPuntos();
+
+    @Override
+    public String toString() {
+        return "Codigo"+codigo+
+                "fecha"+fecha+
+                "comision"+comision+
+                "monto"+monto;
+
+    }
 }

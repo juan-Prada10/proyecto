@@ -578,5 +578,19 @@ public boolean crearDescuento(Transaccion transaccion, Cliente cliente, int punt
 
         return true;
     }
+
+    public Optional<DetalleMonedero> buscarDetalleMonedero(String codigo){
+        return buscarDetalleMonedero(codigo);
+    }
+
+
+    public int puntos(String documento){
+        Optional<Cliente> clienteEncontrado= buscarCliente(documento);
+        if (clienteEncontrado.isEmpty()){
+            throw new IllegalArgumentException("El cliente no existe");
+        }else{return clienteEncontrado.get().getPuntos();}
+    }
+
+
 }
 
