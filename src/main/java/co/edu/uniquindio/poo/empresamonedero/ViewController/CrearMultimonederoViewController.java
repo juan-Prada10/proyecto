@@ -1,7 +1,7 @@
 package co.edu.uniquindio.poo.empresamonedero.ViewController;
 
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.CrearMultimonederoController;
 import javafx.event.ActionEvent;
 import java.net.URL;
@@ -13,10 +13,10 @@ import javafx.scene.control.TextField;
 
 public class CrearMultimonederoViewController {
 
-    private Aplicaccion aplicaccion;
+    private Aplicacion aplicaccion;
     private CrearMultimonederoController crearMultimonederoController;
 
-    public void setApp(Aplicaccion aplicaccion){
+    public void setApp(Aplicacion aplicaccion){
         this.aplicaccion=aplicaccion;
         crearMultimonederoController = new CrearMultimonederoController(aplicaccion.empresaMonedero);
     }

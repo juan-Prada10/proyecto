@@ -2,7 +2,6 @@ package co.edu.uniquindio.poo.empresamonedero.ViewController;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;

@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class Aplicaccion extends Application {
+public class Aplicacion extends Application {
 
     private Stage primaryStage;
     public static EmpresaMonedero empresaMonedero = new EmpresaMonedero("Monedero virtual", "525832");
@@ -25,7 +25,7 @@ public class Aplicaccion extends Application {
         inicializarData();
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/empresamonedero/Menu.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/empresamonedero/Menu.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             MenuViewController menuViewController= loader.getController();
             menuViewController.setApp(this);
@@ -49,7 +49,7 @@ public class Aplicaccion extends Application {
     public void openDeposito() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Deposito.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Deposito.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             DepositoViewController depositoViewController= loader.getController();
             depositoViewController.setApp(this);
@@ -66,7 +66,7 @@ public class Aplicaccion extends Application {
     public void openRetiro() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Retiro.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Retiro.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             RetiroViewController retiroViewController= loader.getController();
             retiroViewController.setApp(this);
@@ -83,7 +83,7 @@ public class Aplicaccion extends Application {
     public void openTransferencia() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Transferencia.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Transferencia.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             TransferenciaViewController transferenciaViewController= loader.getController();
             transferenciaViewController.setApp(this);
@@ -100,7 +100,7 @@ public class Aplicaccion extends Application {
     public void openSaldo() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/SaldoTotal.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/SaldoTotal.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             SaldoTotalViewController saldoTotalViewController= loader.getController();
             saldoTotalViewController.setApp(this);
@@ -117,7 +117,7 @@ public class Aplicaccion extends Application {
     public void openRango() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Rango.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Rango.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             RangoViewController rangoTotalViewController= loader.getController();
             rangoTotalViewController.setApp(this);
@@ -134,7 +134,7 @@ public class Aplicaccion extends Application {
     public void openHistorial() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Transacciones.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Transacciones.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             TransaccionesViewController TransaccionesViewController= loader.getController();
             TransaccionesViewController.setApp(this);
@@ -151,7 +151,7 @@ public class Aplicaccion extends Application {
     public void openPuntos() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Puntos.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Puntos.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             PuntosViewController puntosViewController= loader.getController();
             puntosViewController.setApp(this);
@@ -169,7 +169,7 @@ public class Aplicaccion extends Application {
     public void openBeneficios() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Beneficios.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/Beneficios.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             BeneficiosViewController beneficiosViewController= loader.getController();
             beneficiosViewController.setApp(this);
@@ -186,7 +186,7 @@ public class Aplicaccion extends Application {
     public void openCrearMultimonedero() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/CrearMultimonedero.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/CrearMultimonedero.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             CrearMultimonederoViewController crearMultimonederoViewController= loader.getController();
             crearMultimonederoViewController.setApp(this);
@@ -203,7 +203,7 @@ public class Aplicaccion extends Application {
     public void openProgramada() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Aplicaccion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/TransaccionProgramada.fxml"));
+            loader.setLocation(Aplicacion.class.getResource("/co/edu/uniquindio/poo/emprezamonedero/TransaccionProgramada.fxml"));
             javafx.scene.layout.AnchorPane rootLayout = (javafx.scene.layout.AnchorPane) loader.load();
             TransaccionProgramadaViewController transaccionProgramadaViewController= loader.getController();
             transaccionProgramadaViewController.setApp(this);

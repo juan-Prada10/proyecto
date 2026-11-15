@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 
 import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.RetiroController;
-import co.edu.uniquindio.poo.empresamonedero.model.Deposito;
 import co.edu.uniquindio.poo.empresamonedero.model.DetalleMonedero;
 import co.edu.uniquindio.poo.empresamonedero.model.Estado;
 import co.edu.uniquindio.poo.empresamonedero.model.Retiro;

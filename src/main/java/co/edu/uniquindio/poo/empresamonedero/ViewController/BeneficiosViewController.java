@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo.empresamonedero.ViewController;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.BeneficiosController;
 import co.edu.uniquindio.poo.empresamonedero.model.Cliente;
 import co.edu.uniquindio.poo.empresamonedero.model.Transaccion;
@@ -15,10 +15,10 @@ import javafx.scene.control.TextField;
 
 public class BeneficiosViewController {
 
-    private Aplicaccion aplicaccion;
+    private Aplicacion aplicaccion;
     private BeneficiosController beneficiosController;
 
-    public void setApp(Aplicaccion aplicaccion){
+    public void setApp(Aplicacion aplicaccion){
         this.aplicaccion=aplicaccion;
         beneficiosController=new BeneficiosController(aplicaccion.empresaMonedero);
     }

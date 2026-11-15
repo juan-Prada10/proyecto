@@ -1,13 +1,12 @@
 package co.edu.uniquindio.poo.empresamonedero.ViewController;
 
-import co.edu.uniquindio.poo.empresamonedero.app.Aplicaccion;
+import co.edu.uniquindio.poo.empresamonedero.app.Aplicacion;
 import co.edu.uniquindio.poo.empresamonedero.controller.TransaccionProgramadaController;
 import co.edu.uniquindio.poo.empresamonedero.model.Transaccion;
 import co.edu.uniquindio.poo.empresamonedero.model.TransaccionProgramada;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -16,10 +15,10 @@ import javafx.scene.control.TextField;
 
 public class TransaccionProgramadaViewController {
 
-    private Aplicaccion aplicaccion;
+    private Aplicacion aplicaccion;
     private TransaccionProgramadaController transaccionProgramadaController;
 
-    public void setApp(Aplicaccion aplicaccion){
+    public void setApp(Aplicacion aplicaccion){
         this.aplicaccion=aplicaccion;
         transaccionProgramadaController= new TransaccionProgramadaController(aplicaccion.empresaMonedero);
     }
